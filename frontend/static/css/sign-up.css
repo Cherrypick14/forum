@@ -1,0 +1,262 @@
+/* Commit Message: Add light mode background color and update base styles */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+:root {
+  /* Core Colors with Purple Emphasis */
+  --primary-color: #4b0082;      /* Deep indigo purple for primary backgrounds or headers */
+  --secondary-color: #6a0dad;     /* Vibrant purple for secondary elements */
+  --neutral-color: #c71585;       /* Bright magenta-purple for accents and highlights */
+  --utility-color: #ffd700;       /* Soft gold for call-to-action buttons */
+  --tertiary-color: #daa520;      /* Deeper gold for secondary accents or hover effects */
+
+  /* Dark Theme Base (Preserving the Background) */
+  --dark-bg-color: #0a0b1e;       /* Very dark blue (background base) */
+  --dark-neutral-color: #1e1e2f;  /* Slightly lighter dark blue (card background) */
+  --dark-text-color: #e6e6fa;     /* Light lavender for text on dark backgrounds */
+  --dark-border-color: #2a2a3f;   /* Medium dark blue for borders */
+
+  /* Light Theme Colors */
+  --light-bg-color: #f5f0ff;      /* Very light purple, almost white */
+  --light-text-color: #333;       /* Dark gray for text on light backgrounds */
+  --light-border-color: #d3c7f0;  /* Light purple border for inputs */
+
+  /* Gradient Definition for Dark Mode */
+  --dark-gradient: linear-gradient(to bottom, var(--dark-bg-color), var(--dark-neutral-color));
+
+  /* Additional Styling */
+  --transition: 0.5s ease-in-out; /* Smooth transition for hover effects */
+  --light-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for light elements */
+  --dark-box-shadow: 0px 0px 20px rgba(199, 21, 133, 0.15); /* Magenta-purple glow for dark elements */
+}
+
+body.dark-theme .icon {
+  filter: invert(100%) sepia(3%) saturate(2485%) hue-rotate(188deg)
+    brightness(112%) contrast(95%) !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'League Spartan', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--light-bg-color); /* Default light mode background */
+  color: var(--light-text-color);
+  transition: var(--transition);
+  height: 100%;
+  min-height: 100vh; /* Ensure full height */
+}
+
+body.dark-theme {
+  background: var(--dark-gradient); /* Dark mode gradient */
+  color: var(--dark-text-color);
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+/* Commit Message: Update theme toggler styles for light and dark modes */
+.navbar .theme-toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-toggler span {
+  display: none;
+  font-size: 0.5rem;
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 2rem;
+  transition: var(--transition);
+}
+
+body.dark-theme .theme-toggler span {
+  background-color: var(--dark-text-color);
+  color: var(--dark-bg-color);
+}
+
+.theme-toggler:hover span {
+  display: flex;
+}
+/* Commit Message: Style form container for light and dark modes */
+.form-container {
+  width: 500px;
+  background-color: #fff; /* White background in light mode */
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--light-box-shadow);
+  text-align: center;
+  transition: var(--transition);
+}
+
+body.dark-theme .form-container {
+  background: var(--dark-neutral-color); /* Dark mode card background */
+  box-shadow: var(--dark-box-shadow);
+}
+
+.form-container h2 {
+  margin-bottom: 1rem;
+  color: var(--primary-color); /* Purple in light mode */
+}
+
+body.dark-theme .form-container h2 {
+  color: var(--dark-text-color); /* Lavender in dark mode */
+}
+/* Commit Message: Style input groups and inputs for light and dark modes */
+.input-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+body.dark-theme label {
+  color: var(--dark-text-color);
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid var(--light-border-color); /* Light purple border */
+  background-color: var(--light-bg-color); /* Light purple background */
+  outline: 0;
+  border-radius: 0.25rem;
+  color: var(--light-text-color);
+}
+
+body.dark-theme input {
+  border: 1px solid var(--dark-border-color);
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text-color);
+}
+
+/* Password Input */
+.password {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 1rem;
+}
+/* Commit Message: Style line separator and button for light and dark modes */
+.line {
+  width: 50%;
+  height: 0.75px;
+  margin: 0 auto 1rem;
+  background-color: var(--light-border-color);
+}
+
+body.dark-theme .line {
+  background-color: var(--dark-border-color);
+}
+
+/* Button */
+.btn {
+  background-color: var(--neutral-color); /* Magenta-purple */
+  color: var(--dark-text-color);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: var(--transition);
+}
+
+body.dark-theme .btn {
+  color: var(--dark-text-color); /* Ensure text remains readable */
+}
+
+.btn:hover {
+  background-color: var(--secondary-color); /* Vibrant purple on hover */
+}
+/* Commit Message: Style message popup and feedback for light and dark modes */
+.message-popup {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  right: 1rem;
+  top: 5rem;
+  color: var(--light-text-color);
+  background-color: var(--neutral-color);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  transition: var(--transition);
+}
+
+body.dark-theme .message-popup {
+  color: var(--dark-text-color);
+}
+
+.message-popup.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Success and Error (Excluded from :root) */
+.message-popup.success {
+  background-color: #4caf50 !important; /* Green for success */
+}
+
+.message-popup.error {
+  background-color: #f44336 !important; /* Red for error */
+}
+
+/* Feedback Message */
+.feedback-message {
+  font-weight: 500;
+  margin-top: 0.25rem;
+  font-size: 14px;
+  text-align: right;
+  color: var(--light-text-color);
+}
+
+body.dark-theme .feedback-message {
+  color: var(--dark-text-color);
+}
+/* Commit Message: Style switch form link for light and dark modes */
+.switch-form {
+  margin-top: 1rem;
+}
+
+.switch-form a {
+  color: var(--neutral-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+body.dark-theme .switch-form a {
+  color: var(--neutral-color);
+}
+
+.switch-form a:hover,
+body.dark-theme .switch-form a:hover {
+  color: var(--secondary-color);
+}

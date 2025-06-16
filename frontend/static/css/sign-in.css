@@ -1,0 +1,366 @@
+/* Commit Message: Define root variables and set base styles with light/dark mode support */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+:root {
+  /* Core Colors with Purple Emphasis */
+  --primary-color: #4b0082;      /* Deep indigo purple for primary backgrounds or headers */
+  --secondary-color: #6a0dad;     /* Vibrant purple for secondary elements */
+  --neutral-color: #c71585;       /* Bright magenta-purple for accents and highlights */
+  --utility-color: #ffd700;       /* Soft gold for call-to-action buttons (replaced for button) */
+  --tertiary-color: #daa520;      /* Deeper gold for secondary accents or hover effects */
+
+  /* Dark Theme Base */
+  --dark-bg-color: #0a0b1e;       /* Very dark blue (background base) */
+  --dark-neutral-color: #1e1e2f;  /* Slightly lighter dark blue (card background) */
+  --dark-text-color: #e6e6fa;     /* Light lavender for text on dark backgrounds */
+  --dark-border-color: #2a2a3f;   /* Medium dark blue for borders */
+
+  /* Light Theme Colors */
+  --light-bg-color: #f5f0ff;      /* Very light purple, almost white */
+  --light-text-color: #333;       /* Dark gray for text on light backgrounds */
+  --light-border-color: #d3c7f0;  /* Light purple border for inputs */
+
+  /* Gradient Definition for Dark Mode */
+  --dark-gradient: linear-gradient(to bottom, var(--dark-bg-color), var(--dark-neutral-color));
+
+  /* Additional Styling */
+  --transition: 0.5s ease-in-out; /* Smooth transition for hover effects */
+  --light-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for light elements */
+  --dark-box-shadow: 0px 0px 20px rgba(199, 21, 133, 0.15); /* Magenta-purple glow for dark elements */
+}
+
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--light-bg-color); /* Default light mode */
+  color: var(--light-text-color);
+  transition: var(--transition);
+  height: 100%;
+  min-height: 100vh;
+}
+
+body.dark-theme {
+  background: var(--dark-gradient); /* Dark mode gradient */
+  color: var(--dark-text-color);
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+/* Commit Message: Style header and theme toggler with root colors for light/dark modes */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: var(--light-bg-color);
+  transition: var(--transition);
+}
+
+body.dark-theme header {
+  background: var(--dark-gradient);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.navbar .logo a {
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+body.dark-theme .navbar .logo a {
+  color: var(--dark-text-color);
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.theme-toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-toggler .tooltip-text {
+  display: none;
+  font-size: 0.5rem;
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 2rem;
+  transition: var(--transition);
+}
+
+body.dark-theme .theme-toggler .tooltip-text {
+  background-color: var(--dark-text-color);
+  color: var(--dark-bg-color);
+}
+
+.theme-toggler:hover .tooltip-text {
+  display: flex;
+}
+
+.theme-toggler img {
+  height: 25px;
+  width: 1.2rem;
+  transition: var(--transition);
+}
+
+body.dark-theme .theme-toggler .moon {
+  display: none;
+}
+
+body.dark-theme .theme-toggler .sunny {
+  display: block;
+}
+
+body .theme-toggler .sunny {
+  display: none;
+}
+
+body .theme-toggler .moon {
+  display: block;
+}
+/* Commit Message: Style form container and text for light and dark modes */
+.form-container {
+  width: 500px;
+  background-color: #fff; /* White in light mode */
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--light-box-shadow);
+  text-align: center;
+  margin-top: 80px; /* Space for fixed header */
+  transition: var(--transition);
+}
+
+body.dark-theme .form-container {
+  background: var(--dark-neutral-color); /* Dark mode card background */
+  box-shadow: var(--dark-box-shadow);
+}
+
+.form-container h2 {
+  margin-bottom: 1rem;
+  color: var(--primary-color); /* Purple in light mode */
+}
+
+body.dark-theme .form-container h2 {
+  color: var(--dark-text-color); /* Lavender in dark mode */
+}
+
+.form-container p {
+  font-size: small;
+  color: var(--light-text-color);
+}
+
+body.dark-theme .form-container p {
+  color: var(--dark-text-color);
+}
+/* Commit Message: Style input groups, inputs, and password wrapper for light/dark modes */
+.input-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+body.dark-theme label {
+  color: var(--dark-text-color);
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid var(--light-border-color); /* Light purple border */
+  background-color: var(--light-bg-color); /* Light purple background */
+  outline: 0;
+  border-radius: 0.25rem;
+  color: var(--light-text-color);
+}
+
+body.dark-theme input {
+  border: 1px solid var(--dark-border-color);
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text-color);
+}
+
+.password-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 2.5rem; /* Space for toggle button */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--light-text-color);
+}
+
+body.dark-theme .toggle-password {
+  color: var(--dark-text-color);
+}
+
+.toggle-password box-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+/* Commit Message: Update Sign In button to pink and style line separator and OAuth buttons for light/dark modes */
+.line {
+  width: 50%;
+  height: 0.75px;
+  margin: 0 auto 1rem;
+  background-color: var(--light-border-color);
+}
+
+body.dark-theme .line {
+  background-color: var(--dark-border-color);
+}
+
+/* Sign In Button (Updated to pink) */
+.sign-in-btn.btn {
+  background-color: var(--pink-color); /* New pink color #ff69b4 */
+  color: var(--light-text-color);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: var(--transition);
+}
+
+body.dark-theme .sign-in-btn.btn {
+  color: var(--dark-text-color);
+}
+
+.sign-in-btn.btn:hover {
+  background-color: var(--deep-pink-color); /* Darker pink #ff1493 on hover */
+}
+
+/* Add new pink color variables to :root */
+:root {
+  --pink-color: #ff69b4; /* Vibrant hot pink for button */
+  --deep-pink-color: #ff1493; /* Deep pink for hover */
+}
+
+/* OAuth Buttons */
+.oauth-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.oauth-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--primary-color); /* Deep indigo purple */
+  color: var(--dark-text-color);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 45%;
+  transition: var(--transition);
+}
+
+body.dark-theme .oauth-btn {
+  color: var(--dark-text-color);
+}
+
+.oauth-btn:hover {
+  background-color: var(--secondary-color); /* Vibrant purple on hover */
+}
+
+.google-btn box-icon {
+  fill: var(--dark-text-color);
+}
+
+.github-btn box-icon {
+  fill: var(--dark-text-color);
+}
+.message-popup {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  right: 1rem;
+  top: 5rem;
+  color: var(--light-text-color);
+  background-color: var(--neutral-color); /* Magenta-purple */
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  transition: var(--transition);
+}
+
+body.dark-theme .message-popup {
+  color: var(--dark-text-color);
+}
+
+.message-popup.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Success and Error (Excluded from :root) */
+.message-popup.success {
+  background-color: #4caf50 !important; /* Green for success */
+}
+
+.message-popup.error {
+  background-color: #f44336 !important; /* Red for error */
+}
+/* Commit Message: Style switch form link for light and dark modes */
+.switch-form {
+  margin-top: 1rem;
+}
+
+.switch-form a {
+  color: var(--neutral-color); /* Magenta-purple */
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+body.dark-theme .switch-form a {
+  color: var(--neutral-color); /* Consistent in dark mode */
+}
+
+.switch-form a:hover,
+body.dark-theme .switch-form a:hover {
+  color: var(--secondary-color); /* Vibrant purple on hover */
+}

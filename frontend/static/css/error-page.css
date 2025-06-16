@@ -1,0 +1,130 @@
+
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+:root {
+  /* Core Colors with Purple Emphasis */
+  --primary-color: #4b0082;      /* Deep indigo purple for primary backgrounds or headers */
+  --secondary-color: #6a0dad;     /* Vibrant purple for secondary elements */
+  --neutral-color: #c71585;       /* Bright magenta-purple for accents and highlights */
+  --utility-color: #ffd700;       /* Soft gold for call-to-action buttons (replaced for button) */
+  --tertiary-color: #daa520;      /* Deeper gold for secondary accents or hover effects */
+
+  /* Pink Colors for Buttons */
+  --pink-color: #ff69b4;         /* Vibrant hot pink for button */
+  --deep-pink-color: #ff1493;    /* Deep pink for hover */
+
+  /* Dark Theme Base */
+  --dark-bg-color: #0a0b1e;       /* Very dark blue (background base) */
+  --dark-neutral-color: #1e1e2f;  /* Slightly lighter dark blue (card background) */
+  --dark-text-color: #e6e6fa;     /* Light lavender for text on dark backgrounds */
+  --dark-border-color: #2a2a3f;   /* Medium dark blue for borders */
+
+  /* Light Theme Colors */
+  --light-bg-color: #f5f0ff;      /* Very light purple, almost white */
+  --light-text-color: #333;       /* Dark gray for text on light backgrounds */
+  --light-border-color: #d3c7f0;  /* Light purple border for inputs */
+
+  /* Gradient Definition for Dark Mode */
+  --dark-gradient: linear-gradient(to bottom, var(--dark-bg-color), var(--dark-neutral-color));
+
+  /* Additional Styling */
+  --transition: 0.5s ease-in-out; /* Smooth transition for hover effects */
+  --light-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for light elements */
+  --dark-box-shadow: 0px 0px 20px rgba(199, 21, 133, 0.15); /* Magenta-purple glow for dark elements */
+}
+
+html {
+  scroll-behavior: smooth;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--light-bg-color); /* Default light mode */
+  color: var(--light-text-color);
+  transition: var(--transition);
+}
+
+body.dark-theme {
+  background: var(--dark-gradient); /* Dark mode gradient */
+  color: var(--dark-text-color);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+  padding: 2rem;
+  transition: var(--transition);
+}
+
+.status-code {
+  font-size: 5rem;
+  font-weight: bold;
+  color: var(--neutral-color); /* Changed from tertiary-color to magenta-purple */
+}
+
+body.dark-theme .status-code {
+  color: var(--neutral-color); /* Consistent in dark mode */
+}
+
+.status-msg {
+  font-size: 1.5rem;
+  margin: 5rem 0;
+  color: var(--primary-color); /* Changed from dark-border-color to purple */
+}
+
+body.dark-theme .status-msg {
+  color: var(--dark-text-color); /* Lavender in dark mode */
+}
+
+button {
+  border-radius: 2rem;
+  background-color: var(--pink-color); /* Changed from primary-color to pink */
+  color: var(--dark-text-color);
+  font-size: 1rem;
+  padding: 0.8rem 1.7rem;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+body.dark-theme button {
+  color: var(--dark-text-color);
+}
+
+button:hover {
+  background-color: var(--deep-pink-color); /* Changed from secondary-color to deep pink */
+  transform: scale(1.05);
+}
+
+button a {
+  color: var(--dark-text-color);
+  text-decoration: none;
+  display: block;
+}
+
+body.dark-theme button a {
+  color: var(--dark-text-color);
+}
+
+footer {
+  position: fixed;
+  bottom: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+}
+
+body.dark-theme footer {
+  color: var(--dark-text-color);
+}
