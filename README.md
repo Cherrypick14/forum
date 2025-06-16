@@ -65,7 +65,7 @@ This project is a web forum that allows users to communicate, share posts, comme
 Clone the repository:
 
 ```sh
-git clone https://learn.zone01kisumu.ke/git/allkamau/forum.git
+git clone https://github.com/Cherrypick14/forum.git
 cd forum
 ```
 
@@ -96,4 +96,4 @@ Contribution
 To make a contribution to the project, open an issue with a title, a tag, and a description of your idea on the repository issues' page.
 
 License
-This project is licensed under MIT. ```
+This project is licensed under MIT. 
